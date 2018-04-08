@@ -10,8 +10,8 @@ public class Main extends JApplet {
 
 	private static final long serialVersionUID = 1L;
 	private SortPanel[] sortPanels = new SortPanel[9];
-	private static int size = 100;
-	private int sleepTime = 2;
+	private static int size = 4;
+	private int sleepTime = 400;
 	private String animationName = "";
 
 	public Main() {
@@ -32,15 +32,15 @@ public class Main extends JApplet {
 		sortPanels[6] = new BubbleSortPanel(" Bubble Sort ", sleepTime, width, height);
 		sortPanels[7] = new CombSortPanel(" Comb Sort ", sleepTime, width, height);
 		sortPanels[8] = new CocktailSortPanel(" Cocktail Sort ", sleepTime, width, height);
-		
-		
+
+
 		for (int i = 0; i < sortPanels.length; i++) {
 			sortPanels[i].setVisible(false);
-			sortPanelHolder.add(sortPanels[i]);				
+			sortPanelHolder.add(sortPanels[i]);
 		}
 		add(sortPanelHolder);
 	}
-	
+
 	class SortPanelsHolder extends JPanel {
 		private static final long serialVersionUID = 1L;
 		@Override
@@ -55,10 +55,10 @@ public class Main extends JApplet {
 			g.drawString(animationName, x, y);
 		}
 	}
-	
+
 	public void beginAnimation(String animationName, int[] list) {
 		try {
-			
+
 			this.animationName = animationName;
 			repaint();
 			Thread.sleep(2000);
@@ -90,15 +90,15 @@ public class Main extends JApplet {
 		JFrame frame = new JFrame("Sorting Algorithm Animations");
 		Main main = new Main();
 		frame.add(main);
-		frame.setUndecorated(true);
+//		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
-		
+
+
 		int[] list = new int[size];
-		
+
 		for (int i = 0; i < list.length; i++) {
 			list[i] = i + 1;
 		}
@@ -109,7 +109,7 @@ public class Main extends JApplet {
 			list[index] = temp;
 		}
 		main.beginAnimation("Random", list);
-		
+
 		for (int i = 0; i < list.length; i++) {
 			list[i] = (1 + i / (size / 4) ) * (size / 4);
 		}
@@ -121,13 +121,13 @@ public class Main extends JApplet {
 		}
 		main.beginAnimation("Few Unique", list);
 
-		
+
 		for (int i = 0; i < list.length; i++) {
 			list[i] = size - i;
 		}
 		main.beginAnimation("Reversed", list);
-		
-		
+
+
 		for (int i = 0; i < list.length / 2; i++) {
 			list[i] = i + 1;
 		}
